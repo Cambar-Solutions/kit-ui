@@ -1,0 +1,5 @@
+node_modules
+.registry-build
+public/r
+.demo-check
+*.local

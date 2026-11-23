@@ -1,0 +1,534 @@
+{
+    "$schema":  "https://ui.shadcn.com/schema/registry.json",
+    "name":  "kit-ui",
+    "homepage":  "https://github.com/Cambar-Solutions/kit-ui",
+    "items":  [
+                  {
+                      "name":  "kit-tokens",
+                      "type":  "registry:theme",
+                      "title":  "kit-ui tokens",
+                      "description":  "Variables kit-ui needs that a shadcn theme does not define: success, warning, destructive-foreground, control height, motion duration and section spacing. Colors, type and radius still come from the project theme.",
+                      "cssVars":  {
+                                      "light":  {
+                                                    "success":  "oklch(0.45 0.13 150)",
+                                                    "warning":  "oklch(0.45 0.12 70)",
+                                                    "destructive-foreground":  "oklch(0.99 0 0)"
+                                                },
+                                      "dark":  {
+                                                   "success":  "oklch(0.75 0.14 150)",
+                                                   "warning":  "oklch(0.8 0.13 80)",
+                                                   "destructive-foreground":  "oklch(0.17 0 0)"
+                                               }
+                                  },
+                      "css":  {
+                                  "@layer base":  {
+                                                      ":root":  {
+                                                                    "--control-h":  "2.75rem",
+                                                                    "--motion":  "150ms",
+                                                                    "--space-section":  "1.5rem"
+                                                                }
+                                                  },
+                                  "@media (prefers-reduced-motion: reduce)":  {
+                                                                                  ":root":  {
+                                                                                                "--motion":  "0ms"
+                                                                                            }
+                                                                              },
+                                  "@keyframes kit-shimmer":  {
+                                                                 "0%":  {
+                                                                            "background-position":  "100% 0"
+                                                                        },
+                                                                 "100%":  {
+                                                                              "background-position":  "-100% 0"
+                                                                          }
+                                                             }
+                              },
+                      "categories":  [
+                                         "theme"
+                                     ]
+                  },
+                  {
+                      "name":  "button",
+                      "type":  "registry:ui",
+                      "title":  "Button",
+                      "description":  "Button with variants (default, secondary, outline, ghost, destructive), sizes and a loading state that blocks clicks and sets aria-busy. Uses theme tokens and --control-h.",
+                      "dependencies":  [
+                                           "class-variance-authority"
+                                       ],
+                      "registryDependencies":  [
+                                                   "utils",
+                                                   "Cambar-Solutions/kit-ui/kit-tokens"
+                                               ],
+                      "files":  [
+                                    {
+                                        "path":  "registry/kit/button.tsx",
+                                        "type":  "registry:ui",
+                                        "target":  "@components/kit/button.tsx"
+                                    }
+                                ],
+                      "categories":  [
+                                         "form",
+                                         "action"
+                                     ]
+                  },
+                  {
+                      "name":  "field",
+                      "type":  "registry:ui",
+                      "title":  "Field",
+                      "description":  "Text input with label above, helper and error below, wired with aria-describedby and aria-invalid. Never placeholder-as-label.",
+                      "dependencies":  [
+
+                                       ],
+                      "registryDependencies":  [
+                                                   "utils",
+                                                   "Cambar-Solutions/kit-ui/kit-tokens"
+                                               ],
+                      "files":  [
+                                    {
+                                        "path":  "registry/kit/field.tsx",
+                                        "type":  "registry:ui",
+                                        "target":  "@components/kit/field.tsx"
+                                    }
+                                ],
+                      "categories":  [
+                                         "form"
+                                     ]
+                  },
+                  {
+                      "name":  "field-select",
+                      "type":  "registry:ui",
+                      "title":  "FieldSelect",
+                      "description":  "Native select with the same label, helper and error wiring as Field. Zero JS, best picker on phones.",
+                      "dependencies":  [
+
+                                       ],
+                      "registryDependencies":  [
+                                                   "utils",
+                                                   "Cambar-Solutions/kit-ui/kit-tokens"
+                                               ],
+                      "files":  [
+                                    {
+                                        "path":  "registry/kit/select.tsx",
+                                        "type":  "registry:ui",
+                                        "target":  "@components/kit/select.tsx"
+                                    }
+                                ],
+                      "categories":  [
+                                         "form"
+                                     ]
+                  },
+                  {
+                      "name":  "field-textarea",
+                      "type":  "registry:ui",
+                      "title":  "FieldTextarea",
+                      "description":  "Multi-line input with the same label, helper and error wiring as Field.",
+                      "dependencies":  [
+
+                                       ],
+                      "registryDependencies":  [
+                                                   "utils",
+                                                   "Cambar-Solutions/kit-ui/kit-tokens"
+                                               ],
+                      "files":  [
+                                    {
+                                        "path":  "registry/kit/textarea.tsx",
+                                        "type":  "registry:ui",
+                                        "target":  "@components/kit/textarea.tsx"
+                                    }
+                                ],
+                      "categories":  [
+                                         "form"
+                                     ]
+                  },
+                  {
+                      "name":  "card",
+                      "type":  "registry:ui",
+                      "title":  "Card",
+                      "description":  "Card with header, title, description, content and footer. Use only when elevation means hierarchy.",
+                      "dependencies":  [
+
+                                       ],
+                      "registryDependencies":  [
+                                                   "utils",
+                                                   "Cambar-Solutions/kit-ui/kit-tokens"
+                                               ],
+                      "files":  [
+                                    {
+                                        "path":  "registry/kit/card.tsx",
+                                        "type":  "registry:ui",
+                                        "target":  "@components/kit/card.tsx"
+                                    }
+                                ],
+                      "categories":  [
+                                         "layout"
+                                     ]
+                  },
+                  {
+                      "name":  "skeleton",
+                      "type":  "registry:ui",
+                      "title":  "Skeleton",
+                      "description":  "Skeleton block, CardSkeleton and ListSkeleton shaped like the final content. Shimmer stops under reduced motion; ListSkeleton announces loading once.",
+                      "dependencies":  [
+
+                                       ],
+                      "registryDependencies":  [
+                                                   "utils",
+                                                   "Cambar-Solutions/kit-ui/kit-tokens",
+                                                   "Cambar-Solutions/kit-ui/card"
+                                               ],
+                      "files":  [
+                                    {
+                                        "path":  "registry/kit/skeleton.tsx",
+                                        "type":  "registry:ui",
+                                        "target":  "@components/kit/skeleton.tsx"
+                                    }
+                                ],
+                      "categories":  [
+                                         "state"
+                                     ]
+                  },
+                  {
+                      "name":  "empty-state",
+                      "type":  "registry:ui",
+                      "title":  "EmptyState",
+                      "description":  "Empty and error state with title, what to do next and an action. tone=error uses role=alert.",
+                      "dependencies":  [
+
+                                       ],
+                      "registryDependencies":  [
+                                                   "utils",
+                                                   "Cambar-Solutions/kit-ui/kit-tokens"
+                                               ],
+                      "files":  [
+                                    {
+                                        "path":  "registry/kit/empty-state.tsx",
+                                        "type":  "registry:ui",
+                                        "target":  "@components/kit/empty-state.tsx"
+                                    }
+                                ],
+                      "categories":  [
+                                         "state"
+                                     ]
+                  },
+                  {
+                      "name":  "badge",
+                      "type":  "registry:ui",
+                      "title":  "Badge",
+                      "description":  "Status label with tones neutral, info, success, warning, danger. Always text, never color only.",
+                      "dependencies":  [
+                                           "class-variance-authority"
+                                       ],
+                      "registryDependencies":  [
+                                                   "utils",
+                                                   "Cambar-Solutions/kit-ui/kit-tokens"
+                                               ],
+                      "files":  [
+                                    {
+                                        "path":  "registry/kit/badge.tsx",
+                                        "type":  "registry:ui",
+                                        "target":  "@components/kit/badge.tsx"
+                                    }
+                                ],
+                      "categories":  [
+                                         "status"
+                                     ]
+                  },
+                  {
+                      "name":  "chips",
+                      "type":  "registry:ui",
+                      "title":  "Chips",
+                      "description":  "Single-choice quick filters as pills with aria-pressed. Keep the value in the URL.",
+                      "dependencies":  [
+
+                                       ],
+                      "registryDependencies":  [
+                                                   "utils",
+                                                   "Cambar-Solutions/kit-ui/kit-tokens",
+                                                   "Cambar-Solutions/kit-ui/button"
+                                               ],
+                      "files":  [
+                                    {
+                                        "path":  "registry/kit/chips.tsx",
+                                        "type":  "registry:ui",
+                                        "target":  "@components/kit/chips.tsx"
+                                    }
+                                ],
+                      "categories":  [
+                                         "filter"
+                                     ]
+                  },
+                  {
+                      "name":  "alert",
+                      "type":  "registry:ui",
+                      "title":  "Alert",
+                      "description":  "Inline message (info, success, warning, danger) with optional action. Urgent tones use role=alert.",
+                      "dependencies":  [
+                                           "class-variance-authority"
+                                       ],
+                      "registryDependencies":  [
+                                                   "utils",
+                                                   "Cambar-Solutions/kit-ui/kit-tokens"
+                                               ],
+                      "files":  [
+                                    {
+                                        "path":  "registry/kit/alert.tsx",
+                                        "type":  "registry:ui",
+                                        "target":  "@components/kit/alert.tsx"
+                                    }
+                                ],
+                      "categories":  [
+                                         "feedback"
+                                     ]
+                  },
+                  {
+                      "name":  "stat",
+                      "type":  "registry:ui",
+                      "title":  "Stat",
+                      "description":  "One number with its label and hint, for KPI rows inside a dl.",
+                      "dependencies":  [
+
+                                       ],
+                      "registryDependencies":  [
+                                                   "utils",
+                                                   "Cambar-Solutions/kit-ui/kit-tokens"
+                                               ],
+                      "files":  [
+                                    {
+                                        "path":  "registry/kit/stat.tsx",
+                                        "type":  "registry:ui",
+                                        "target":  "@components/kit/stat.tsx"
+                                    }
+                                ],
+                      "categories":  [
+                                         "data"
+                                     ]
+                  },
+                  {
+                      "name":  "timeline",
+                      "type":  "registry:ui",
+                      "title":  "Timeline",
+                      "description":  "Vertical process timeline (order status, onboarding) with done, current, upcoming and blocked steps; state is also read by screen readers.",
+                      "dependencies":  [
+
+                                       ],
+                      "registryDependencies":  [
+                                                   "utils",
+                                                   "Cambar-Solutions/kit-ui/kit-tokens"
+                                               ],
+                      "files":  [
+                                    {
+                                        "path":  "registry/kit/timeline.tsx",
+                                        "type":  "registry:ui",
+                                        "target":  "@components/kit/timeline.tsx"
+                                    }
+                                ],
+                      "categories":  [
+                                         "status",
+                                         "process"
+                                     ]
+                  },
+                  {
+                      "name":  "confirm-dialog",
+                      "type":  "registry:ui",
+                      "title":  "ConfirmDialog",
+                      "description":  "Confirmation for destructive or irreversible actions on native dialog: focus trap and Esc from the browser. Name the target in the description.",
+                      "dependencies":  [
+
+                                       ],
+                      "registryDependencies":  [
+                                                   "utils",
+                                                   "Cambar-Solutions/kit-ui/kit-tokens",
+                                                   "Cambar-Solutions/kit-ui/button"
+                                               ],
+                      "files":  [
+                                    {
+                                        "path":  "registry/kit/confirm-dialog.tsx",
+                                        "type":  "registry:ui",
+                                        "target":  "@components/kit/confirm-dialog.tsx"
+                                    }
+                                ],
+                      "categories":  [
+                                         "feedback",
+                                         "overlay"
+                                     ]
+                  },
+                  {
+                      "name":  "list-view",
+                      "type":  "registry:ui",
+                      "title":  "ListView",
+                      "description":  "List template with loading, empty, error and ready states resolved, and optional selectable rows.",
+                      "dependencies":  [
+
+                                       ],
+                      "registryDependencies":  [
+                                                   "utils",
+                                                   "Cambar-Solutions/kit-ui/kit-tokens",
+                                                   "Cambar-Solutions/kit-ui/button",
+                                                   "Cambar-Solutions/kit-ui/card",
+                                                   "Cambar-Solutions/kit-ui/empty-state",
+                                                   "Cambar-Solutions/kit-ui/skeleton"
+                                               ],
+                      "files":  [
+                                    {
+                                        "path":  "registry/kit/list-view.tsx",
+                                        "type":  "registry:ui",
+                                        "target":  "@components/kit/list-view.tsx"
+                                    }
+                                ],
+                      "categories":  [
+                                         "template",
+                                         "state"
+                                     ]
+                  },
+                  {
+                      "name":  "table-view",
+                      "type":  "registry:ui",
+                      "title":  "TableView",
+                      "description":  "Data table template with the four states, columns hidden by container width, selectable rows and a toolbar slot.",
+                      "dependencies":  [
+
+                                       ],
+                      "registryDependencies":  [
+                                                   "utils",
+                                                   "Cambar-Solutions/kit-ui/kit-tokens",
+                                                   "Cambar-Solutions/kit-ui/button",
+                                                   "Cambar-Solutions/kit-ui/empty-state",
+                                                   "Cambar-Solutions/kit-ui/skeleton",
+                                                   "Cambar-Solutions/kit-ui/list-view"
+                                               ],
+                      "files":  [
+                                    {
+                                        "path":  "registry/kit/table-view.tsx",
+                                        "type":  "registry:ui",
+                                        "target":  "@components/kit/table-view.tsx"
+                                    }
+                                ],
+                      "categories":  [
+                                         "template",
+                                         "data"
+                                     ]
+                  },
+                  {
+                      "name":  "all",
+                      "type":  "registry:item",
+                      "title":  "kit-ui (all components)",
+                      "description":  "Installs every kit-ui component and the kit tokens.",
+                      "registryDependencies":  [
+                                                   "Cambar-Solutions/kit-ui/button",
+                                                   "Cambar-Solutions/kit-ui/field",
+                                                   "Cambar-Solutions/kit-ui/field-select",
+                                                   "Cambar-Solutions/kit-ui/field-textarea",
+                                                   "Cambar-Solutions/kit-ui/card",
+                                                   "Cambar-Solutions/kit-ui/skeleton",
+                                                   "Cambar-Solutions/kit-ui/empty-state",
+                                                   "Cambar-Solutions/kit-ui/badge",
+                                                   "Cambar-Solutions/kit-ui/chips",
+                                                   "Cambar-Solutions/kit-ui/alert",
+                                                   "Cambar-Solutions/kit-ui/stat",
+                                                   "Cambar-Solutions/kit-ui/timeline",
+                                                   "Cambar-Solutions/kit-ui/confirm-dialog",
+                                                   "Cambar-Solutions/kit-ui/list-view",
+                                                   "Cambar-Solutions/kit-ui/table-view"
+                                               ],
+                      "files":  [
+
+                                ]
+                  },
+                  {
+                      "name":  "demo-pwa",
+                      "type":  "registry:item",
+                      "title":  "demo-pwa skill",
+                      "description":  "Agent skill that builds a sales-ready demo PWA for a business client from one short brief. Installs into .kiro/skills/demo-pwa of the project.",
+                      "files":  [
+                                    {
+                                        "path":  "skills/demo-pwa/README.md",
+                                        "type":  "registry:file",
+                                        "target":  "~/.kiro/skills/demo-pwa/README.md"
+                                    },
+                                    {
+                                        "path":  "skills/demo-pwa/SKILL.md",
+                                        "type":  "registry:file",
+                                        "target":  "~/.kiro/skills/demo-pwa/SKILL.md"
+                                    },
+                                    {
+                                        "path":  "skills/demo-pwa/references/build.md",
+                                        "type":  "registry:file",
+                                        "target":  "~/.kiro/skills/demo-pwa/references/build.md"
+                                    },
+                                    {
+                                        "path":  "skills/demo-pwa/references/design-floor.md",
+                                        "type":  "registry:file",
+                                        "target":  "~/.kiro/skills/demo-pwa/references/design-floor.md"
+                                    },
+                                    {
+                                        "path":  "skills/demo-pwa/references/handoff.md",
+                                        "type":  "registry:file",
+                                        "target":  "~/.kiro/skills/demo-pwa/references/handoff.md"
+                                    },
+                                    {
+                                        "path":  "skills/demo-pwa/references/intake.md",
+                                        "type":  "registry:file",
+                                        "target":  "~/.kiro/skills/demo-pwa/references/intake.md"
+                                    },
+                                    {
+                                        "path":  "skills/demo-pwa/references/publish.md",
+                                        "type":  "registry:file",
+                                        "target":  "~/.kiro/skills/demo-pwa/references/publish.md"
+                                    },
+                                    {
+                                        "path":  "skills/demo-pwa/references/verification.md",
+                                        "type":  "registry:file",
+                                        "target":  "~/.kiro/skills/demo-pwa/references/verification.md"
+                                    },
+                                    {
+                                        "path":  "skills/demo-pwa/references/domains/comercio-alimentos.md",
+                                        "type":  "registry:file",
+                                        "target":  "~/.kiro/skills/demo-pwa/references/domains/comercio-alimentos.md"
+                                    },
+                                    {
+                                        "path":  "skills/demo-pwa/references/domains/consultorio.md",
+                                        "type":  "registry:file",
+                                        "target":  "~/.kiro/skills/demo-pwa/references/domains/consultorio.md"
+                                    },
+                                    {
+                                        "path":  "skills/demo-pwa/references/domains/taller-mecanico.md",
+                                        "type":  "registry:file",
+                                        "target":  "~/.kiro/skills/demo-pwa/references/domains/taller-mecanico.md"
+                                    },
+                                    {
+                                        "path":  "skills/demo-pwa/references/domains/_template.md",
+                                        "type":  "registry:file",
+                                        "target":  "~/.kiro/skills/demo-pwa/references/domains/_template.md"
+                                    },
+                                    {
+                                        "path":  "skills/demo-pwa/scripts/check-budget.mjs",
+                                        "type":  "registry:file",
+                                        "target":  "~/.kiro/skills/demo-pwa/scripts/check-budget.mjs"
+                                    },
+                                    {
+                                        "path":  "skills/demo-pwa/scripts/check-encoding.mjs",
+                                        "type":  "registry:file",
+                                        "target":  "~/.kiro/skills/demo-pwa/scripts/check-encoding.mjs"
+                                    },
+                                    {
+                                        "path":  "skills/demo-pwa/scripts/scaffold.mjs",
+                                        "type":  "registry:file",
+                                        "target":  "~/.kiro/skills/demo-pwa/scripts/scaffold.mjs"
+                                    },
+                                    {
+                                        "path":  "skills/demo-pwa/scripts/smoke.mjs",
+                                        "type":  "registry:file",
+                                        "target":  "~/.kiro/skills/demo-pwa/scripts/smoke.mjs"
+                                    },
+                                    {
+                                        "path":  "skills/demo-pwa/scripts/verify.mjs",
+                                        "type":  "registry:file",
+                                        "target":  "~/.kiro/skills/demo-pwa/scripts/verify.mjs"
+                                    }
+                                ],
+                      "docs":  "Skill installed in .kiro/skills/demo-pwa. For other harnesses copy that folder to their skills directory (for example .claude/skills/demo-pwa). Recommended companion skill: impeccable.",
+                      "categories":  [
+                                         "skill"
+                                     ]
+                  }
+              ]
+}

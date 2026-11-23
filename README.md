@@ -1,62 +1,46 @@
 # kit-ui
 
-Internal UI kit and app shell (React + Vite + Tailwind v4 + TanStack Router/Query + Zustand, PWA) and an agent skill that generates views with it. Built to be light for the end user: lazy routes, cached data, bounded caches, a bundle budget.
+Herramientas de Cambar Solutions para construir demos y apps web con agentes de IA.
 
-## Run
+- **`demo-pwa`**: skill para agentes que arma una demo PWA lista para enseñar a un cliente a partir de un brief corto ("crea una demo para un taller de motos"). Diseña con la skill `impeccable`, construye un área de cliente para teléfono y un panel administrativo con datos de ejemplo mexicanos, y la verifica en un navegador real.
+- **Componentes kit-ui**: componentes React + Tailwind v4 que se instalan uno por uno con el CLI de shadcn (estados, validación, accesibilidad y confirmaciones ya resueltos). Toman colores, tipografía y radios del tema del proyecto.
+
+## Instalar la skill
+
+En el proyecto (queda en `.kiro/skills/demo-pwa`):
 
 ```bash
-npm install
-npm run dev           # demo: shell, profiles, dark mode, four view states
-npm run verify        # tokens + types + production build + bundle budget
-npm run preview       # test the service worker and offline in the production build
+npx shadcn@latest add Cambar-Solutions/kit-ui/demo-pwa
 ```
 
-## Where things live
+Para todos tus proyectos, copia `skills/demo-pwa` a `~/.kiro/skills/demo-pwa` (o a la carpeta de skills de tu herramienta, por ejemplo `~/.claude/skills/demo-pwa`).
 
-```
-src/shell.config.ts       THE place to change structure (sidebar side, account, inspector, bottom bar)
-src/brand.config.ts       per-client identity (name, initials, profile)
-src/shell/                AppShell, InspectorSlot, Zustand store (only place that knows panel positions)
-src/themes/               tokens (base.css), one block per profile (profiles.css), fonts (latin only)
-src/components/ui/        Button, Field, Card, Skeleton, EmptyState
-src/templates/            ListView (four states, selectable rows)
-src/pages/                demo screens, lazy loaded per route
-src/lib/query-client.ts   freshness windows (STALE) and cache defaults
-src/pwa/                  update, offline-ready and offline notices
-src/router.tsx            TanStack Router, lazy routes, link preloading on intent
-scripts/                  check-tokens (no hard-coded colors), check-budget (bundle weight)
-skills/kit-ui/            the agent skill (SKILL.md + references/)
+Skills recomendadas que se usan por nombre (instálalas aparte): `impeccable` (diseño, crítica y pulido), y opcionalmente `frontend-design`, `offline-first-pwa`, `pwa-review`.
+
+Uso: pídele al agente *"crea una demo para una cremería"*. Hará hasta 7 preguntas con respuesta propuesta; contesta "ok" para aceptarlas.
+
+## Instalar componentes
+
+```bash
+npx shadcn@latest add Cambar-Solutions/kit-ui/button
+npx shadcn@latest add Cambar-Solutions/kit-ui/table-view
+npx shadcn@latest add Cambar-Solutions/kit-ui/all
+npx shadcn@latest list Cambar-Solutions/kit-ui
 ```
 
-## State, in one table
+Se instalan en `components/kit/`. Catálogo, ejemplos y cómo adaptarlos a un diseño propio: [docs/components.md](docs/components.md).
 
-| State | Tool |
-|---|---|
-| Position, filters, selected item | URL (TanStack Router search params) |
-| Server data | TanStack Query (`STALE` windows, local filtering) |
-| Shared UI state (sidebar, inspector, theme mode) | Zustand |
-| Local and short-lived | `useState` |
+Con un agente: *"usa el Button de kit-ui"*.
 
-## Profiles
+## Estructura
 
-`saas-app`, `backoffice`, `ecommerce`, `local-business`, `fintech`, `health`, `education`, `marketing`.
-Each has a theme block in `profiles.css` and a rules file in `skills/kit-ui/references/profiles/`.
+```
+registry.json          catálogo del registry (shadcn)
+registry/kit/          código de los componentes
+skills/demo-pwa/       la skill
+docs/components.md     catálogo y ejemplos
+```
 
-## Change the structure
+## Uso interno
 
-Edit `src/shell.config.ts` (pick a preset, override keys). Vocabulary and procedure: `skills/kit-ui/references/shell.md`.
-
-## Caching and performance
-
-Rules, strategy table, backend headers and targets: `skills/kit-ui/references/performance.md`.
-
-## Install the skill in a project
-
-Copy `skills/kit-ui` to `<project>/.kiro/skills/kit-ui` (or the equivalent folder of your harness).
-It references `taste-skill`, `impeccable` and `redesign-skill` by name only. It works without them.
-
-## Known gaps
-
-- `npm audit` reports 4 moderate issues in `glob` and `minimatch`, pulled by `workbox-build` (build time only, not shipped to users). Revisit when the PWA plugin updates.
-- Manifest icon is an SVG placeholder. Real installs need 192 and 512 PNG icons per client.
-- Not yet checked in a browser: layout at each breakpoint, service worker update flow, offline behavior, Lighthouse.
+Este repositorio no tiene licencia: el código es de Cambar Solutions y su uso está reservado a su equipo. Si el repo vuelve a ser privado, la instalación sigue funcionando para quien tenga acceso, con `gh auth login` o con la variable `GH_TOKEN` (token de solo lectura del repo).
