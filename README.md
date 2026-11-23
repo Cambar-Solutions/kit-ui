@@ -54,6 +54,7 @@ Con un agente: *"usa el Button de kit-ui"*.
 ## Estructura
 
 ```
+bin/kit-ui.mjs         comando npx: revisa e instala las skills
 registry.json          catálogo del registry (shadcn)
 registry/kit/          código de los componentes
 skills/demo-pwa/       la skill
