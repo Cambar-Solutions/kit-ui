@@ -7,15 +7,34 @@ Herramientas de Cambar Solutions para construir demos y apps web con agentes de 
 
 ## Instalar la skill
 
-En el proyecto (queda en `.kiro/skills/demo-pwa`):
+Un comando revisa qué skills tienes, te dice cuáles faltan y las instala desde sus repos oficiales si aceptas:
 
 ```bash
-npx shadcn@latest add Cambar-Solutions/kit-ui/demo-pwa
+npx github:Cambar-Solutions/kit-ui
 ```
 
-Para todos tus proyectos, copia `skills/demo-pwa` a `~/.kiro/skills/demo-pwa` (o a la carpeta de skills de tu herramienta, por ejemplo `~/.claude/skills/demo-pwa`).
+| Skill | Nivel | Para qué | Se instala desde |
+|---|---|---|---|
+| `demo-pwa` | necesaria | constructor de demos | este repo |
+| `impeccable` | recomendada | diseño, crítica y pulido | su instalador oficial (`npx impeccable install`) |
+| `offline-first-pwa` | recomendada | reglas de PWA | github.com/mattiasgeniar/offline-first-pwa |
+| `frontend-design` | opcional | diseño de respaldo | github.com/anthropics/skills |
+| `pwa-review` | opcional | auditoría de PWA | github.com/NexFabric/pwa-review-skill |
+| `shadcn` | opcional | reglas para componentes | github.com/shadcn-ui/ui |
 
-Skills recomendadas que se usan por nombre (instálalas aparte): `impeccable` (diseño, crítica y pulido), y opcionalmente `frontend-design`, `offline-first-pwa`, `pwa-review`.
+Opciones:
+
+```bash
+npx github:Cambar-Solutions/kit-ui check                 # solo revisar, no instala nada
+npx github:Cambar-Solutions/kit-ui --yes --scope global  # instalar todo sin preguntar
+npx github:Cambar-Solutions/kit-ui --only demo-pwa,impeccable
+npx github:Cambar-Solutions/kit-ui --harness claude      # kiro (por defecto), claude o codex
+npx github:Cambar-Solutions/kit-ui --force               # reinstalar o actualizar
+```
+
+`global` instala en `~/.kiro/skills` (todos tus proyectos); `project` en `.kiro/skills` de la carpeta actual. Las skills de terceros se descargan de su fuente original en tu máquina; este repo no las copia.
+
+Alternativa solo para un proyecto con `components.json`: `npx shadcn@latest add Cambar-Solutions/kit-ui/demo-pwa`.
 
 Uso: pídele al agente *"crea una demo para una cremería"*. Hará hasta 7 preguntas con respuesta propuesta; contesta "ok" para aceptarlas.
 
